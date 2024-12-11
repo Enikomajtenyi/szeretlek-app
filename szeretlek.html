@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 ok, amiért szeretlek, Dávid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>100 ok, amiért szeretlek, Dávid</h1>
+    <button id="showMessage">Kattints ide egy okért!</button>
+    <div class="message" id="message"></div>
+    <script>
+        const messages = [
+            "Biztonságban érzem magam melletted.",
+            "Mindig olyan vicces vagy, és legalább olyan őrült, mint én.",
+            "Szexi vagy, minden értelemben.",
+            "Iszonyatosan jó veled a szex – sosem hagynám abba.",
+            "Bármit viselsz, minden jól áll neked.",
+            "Mesterien főzöl, és imádom a főztjeidet.",
+            "Olyan cuki vagy, amikor órákig simogatsz.",
+            "Hihetetlenül okos vagy, és bármit meg tudsz oldani.",
+            "Rád bíznám az életem, bármikor, gondolkodás nélkül.",
+            "Minden helyzetben megbízható vagy.",
+            "Imádom, hogy mindig olyan szerény vagy, ahhoz képest, hogy mennyire csodálatos.",
+            "Szeretem a szexi bőrödet, de igazából mindenedet.",
+            "Annyira viccesek vagyunk együtt Kivivel.",
+            "Jól elvagy a családommal, és ők is nagyon kedvelnek téged.",
+            "Kedves vagy a családommal, és ez számomra rengeteget jelent.",
+            "Bármikor, bármiben számíthatok rád – akár hüvelytablettát is veszel nekem.",
+            "Minden beszélgetésünk után tisztábbnak és szebbnek látom a világot.",
+            "Olyan megoldó típus vagy, hogy bármilyen helyzetet képes vagy kezelni.",
+            "Imádom, hogy mindig meglátod a dolgok másik oldalát, amire én nem gondolnék.",
+            "Az intelligenciád lenyűgöz.",
+            "Mindig tudod, hogyan lehet egy problémát egyszerűen és hatékonyan megoldani.",
+            "Jól kezeled az embereket, és imádom, hogy mindig megtalálod velük a hangot.",
+            "Nyitott vagy minden újra, és ez inspiráló számomra.",
+            "Aranyoska vagy, amikor mosolyogsz – azt egyszerűen nem lehet nem szeretni.",
+            "Olyan jó érzékkel tudsz hozzám szólni, hogy azonnal megnyugszom tőle.",
+            "A nevetésed ragályos, és egyszerűen nem tudok nem mosolyogni rajta.",
+            "Imádom, hogy veled mindig könnyedén telik az idő.",
+            "Ketten együtt annyira jó kis csapat vagyunk!",
+            "Szeretem, hogy mindig figyelsz rám, és valóban érdekel, amit mondok.",
+            "Olyan támogató vagy, hogy bármikor erősebbnek érzem magam melletted.",
+            "Minden helyzetben képes vagy higgadtan gondolkodni.",
+            "Mindig fel tudsz vidítani, ha rossz kedvem van.",
+            "Imádom, hogy a legnagyobb őrültségekben is benne vagy.",
+            "Közös poénjaink mindig megnevettetnek.",
+            "Annyira jól bánsz Kivivel, hogy szinte látom, mennyire imád téged.",
+            "A gondoskodásod annyira természetes, hogy szinte magától értetődőnek tűnik.",
+            "Sosem ítélkezel, mindig elfogadod a hülyeségeimet is.",
+            "Olyan szuper barát is vagy, nemcsak társ.",
+            "Az ölelésed a legjobb hely a világon.",
+            "Tudsz hallgatni, és ez annyira megnyugtató.",
+            "Minden apró részletre figyelsz, amit más talán észre sem venne.",
+            "Szeretem, hogy veled még a csend is kényelmes.",
+            "A humorképességed a legnagyobb erősségeink egyike.",
+            "Szeretem, hogy IT-guru vagy, és mindig segítesz, ha valamihez nem értek.",
+            "Minden apró dolgot különlegessé teszel.",
+            "Olyan aranyoska vagy, amikor valamin nagyon dolgozol és elmélyülsz benne.",
+            "Sosem érzem magam egyedül, mert mindig ott vagy.",
+            "Imádom, hogy képes vagy órákon át beszélgetni velem.",
+            "Mindig bátorítasz, hogy higgyek magamban.",
+            "Rávilágítasz a dolgok pozitív oldalára.",
+            "A csókjaid mindig megdobogtatják a szívemet.",
+            "Szeretem, hogy veled mindent megbeszélhetek, és mindig van rá válaszod.",
+            "Türelmes vagy, még akkor is, ha én néha nem vagyok az.",
+            "Mindig mellettem állsz, bármi is történjen.",
+            "Tudsz meglepetéseket okozni, és imádom ezt.",
+            "Olyan jó veled nevetni és hülyéskedni.",
+            "Mindig megtalálod a módját, hogy boldoggá tegyél.",
+            "Az intelligenciád és a humorod tökéletes kombináció.",
+            "Olyan kreatív vagy, hogy mindig elképesztesz.",
+            "Sosem unom meg az öleléseidet.",
+            "Minden helyzetben számíthatok rád.",
+            "Olyan kiszámíthatatlanul cuki tudsz lenni, amikor nem is várnám.",
+            "Szeretem, hogy a legnehezebb helyzeteket is képes vagy könnyedén kezelni.",
+            "Inspirálsz arra, hogy jobb ember legyek.",
+            "Minden közös élményünk annyira különleges.",
+            "Olyan figyelmes vagy, hogy néha teljesen elérzékenyülök.",
+            "Imádom, hogy sosem felejted el, mi a fontos nekem.",
+            "Támogatsz minden álmomban.",
+            "A világot szebb helynek látom melletted.",
+            "Imádom, hogy mindig pozitívan állsz az élethez.",
+            "Sosem vagy unalmas, mindig tartogat valami újat a személyiséged.",
+            "Megnevettetsz, amikor a legnagyobb szükségem van rá.",
+            "Annyira cuki vagy, amikor valamiért lelkesedsz.",
+            "Mindig olyan jól csinálsz mindent, amit eltervezel.",
+            "Az érintésed mindig megnyugtat.",
+            "Olyan tiszta szívű vagy, hogy azt csodálom benned.",
+            "Ketten együtt minden akadályt legyőzünk.",
+            "A veled töltött idő a napom legjobb része.",
+            "Mindig képes vagy lenyűgözni valami újjal.",
+            "Az intelligenciád mindig motivál, hogy én is tanuljak tőled.",
+            "Annyira cuki vagy, amikor valamit lelkesen magyarázol.",
+            "Az éleslátásod mindig átlendít a nehézségeken.",
+            "Szeretem, hogy a problémák sosem állítanak meg.",
+            "A hangod megnyugtat, bármiről is beszélsz.",
+            "Veled minden kaland különleges.",
+            "Sosem vagy ítélkező, és ez olyan felszabadító.",
+            "Imádom, hogy mindig meglepsz valamivel.",
+            "Az érzékenységed annyira tiszteletre méltó.",
+            "Olyan jól bánsz Kivivel, hogy néha féltékeny vagyok rá!",
+            "Minden pillanatot meg akarok osztani veled.",
+            "Veled sosem félek a jövőtől.",
+            "Mindig tudod, hogyan hozzuk ki a legjobbat egymásból.",
+            "A szereteted minden nap erőt ad.",
+            "Annyira különleges vagy, hogy szavakkal nehéz leírni.",
+            "Veled minden nap újabb csoda.",
+            "Az életem egyszerűen jobb, mert benne vagy.",
+            "Minden mosolyod olyan, mint egy ajándék.",
+            "Veled vagyok igazán önmagam.",
+            "Bármit rád bíznék, mert tudom, hogy tökéletesen megoldod.",
+            "Egyszerűen szeretlek, mert te vagy te."
+        ];
+
+        document.getElementById('showMessage').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('message').textContent = messages[randomIndex];
+        });
+    </script>
+</body>
+</html>
+
